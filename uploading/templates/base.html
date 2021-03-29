@@ -1,0 +1,34 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>One Codex Relative Abundance</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+        <form method="post" id="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" id="file" class="file" name="myfile">
+            <label for="file">Select One Codex File</label>
+            <!--<button type="submit">Upload</button>-->
+        </form>
+
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+
+            document.getElementById("file").onchange = function() {
+                document.getElementById("form").submit();
+            };
+        </script>
+
+        {% if message != '' %}
+            <script>
+                alert('{{ message }}');
+            </script>
+        {% endif %}
+
+    </body>
+</html>

@@ -1,0 +1,106 @@
+html, body {
+    align-items: center;
+    background: #f2f4f8;
+    border: 0;
+    display: flex;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    height: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+form {
+    --background: white;
+    --border: rgba(0, 0, 0, 0.125);
+    --borderDark: rgba(0, 0, 0, 0.25);
+    --borderDarker: rgba(0, 0, 0, 0.5);
+    --bgColorH: 0;
+    --bgColorS: 0%;
+    --bgColorL: 98%;
+    --fgColorH: 210;
+    --fgColorS: 50%;
+    --fgColorL: 38%;
+    --shadeDark: 0.3;
+    --shadeLight: 0.7;
+    --shadeNormal: 0.5;
+    --borderRadius: 0.125rem;
+    --highlight: #306090;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--borderRadius);
+    box-shadow: 0 1rem 1rem -0.75rem var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+[type="file"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+}
+  
+[type="file"] + label {
+    color: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    background: #306090;
+    line-height: 1.75rem;
+    font-size: 14px;
+    text-align: center;
+    height: 1.75rem;
+    margin-top: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    display: inline-block;
+    border: none;
+    border-radius: 0.125rem;
+    cursor: pointer;
+    padding-left: 2rem 4rem;
+    transition: all 0.4s ease 0s;
+}
+  
+/*  [type="file"]:focus + label,*/
+[type="file"] + label:hover {
+    background: #434343;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+  
+/*  [type="file"]:focus + label {
+    outline: 1px dotted #000;
+}*/
+
+/*button {
+    color: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #306090;
+    height: 2.25rem;
+    line-height: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    width: 15rem;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+}
+
+button:hover {
+    background: #434343;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}*/
