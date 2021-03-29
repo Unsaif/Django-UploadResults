@@ -1,4 +1,5 @@
 import pandas as pd
+from .agoraLists import agora2Species, agora2Genera
 
 def gettingCols(overalldic):
     dfdic = {}
@@ -27,12 +28,25 @@ def overall(df, rows):
     return overalldic
 
 def relative_abundance(df, SorG):
-    rows = list(df["Tax Name"].unique())
-    rows.sort()
     
-    df = df[["Sample Name", "Tax Name", "Reads"]].groupby('Sample Name').agg(lambda x: list(x))
-    df = pd.DataFrame(df)
-    df = df.reset_index()
+    if SorG == "Species":
+        df = df[df['Tax Name'].isin(agora2Species)]
+
+        rows = list(df["Tax Name"].unique()) 
+
+        df = df[["Sample Name", "Tax Name", "Reads"]].groupby('Sample Name').agg(lambda x: list(x))
+        df = pd.DataFrame(df)
+        df = df.reset_index()
+    else:
+        df = df[df['Tax Name'].isin(agora2Genera)]
+
+        rows = list(df["Tax Name"].unique()) 
+
+        df = df[["Sample Name", "Tax Name", "Reads"]].groupby('Sample Name').agg(lambda x: list(x))
+        df = pd.DataFrame(df)
+        df = df.reset_index()
+     
+    rows.sort()
     
     columns = list(df["Sample Name"])
     
