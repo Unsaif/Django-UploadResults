@@ -29,24 +29,12 @@ def overall(df, rows):
 
 def relative_abundance(df, SorG):
     
-    if SorG == "Species":
-        df = df[df['Tax Name'].isin(agora2Species)]
-
-        rows = list(df["Tax Name"].unique()) 
-
-        df = df[["Sample Name", "Tax Name", "Reads"]].groupby('Sample Name').agg(lambda x: list(x))
-        df = pd.DataFrame(df)
-        df = df.reset_index()
-    else:
-        df = df[df['Tax Name'].isin(agora2Genera)]
-
-        rows = list(df["Tax Name"].unique()) 
-
-        df = df[["Sample Name", "Tax Name", "Reads"]].groupby('Sample Name').agg(lambda x: list(x))
-        df = pd.DataFrame(df)
-        df = df.reset_index()
-     
+    rows = list(df["Tax Name"].unique())  
     rows.sort()
+
+    df = df[["Sample Name", "Tax Name", "Reads"]].groupby('Sample Name').agg(lambda x: list(x))
+    df = pd.DataFrame(df)
+    df = df.reset_index()
     
     columns = list(df["Sample Name"])
     
@@ -56,8 +44,14 @@ def relative_abundance(df, SorG):
     dataframe = pd.DataFrame.from_dict(dfdic)
     dataframe[SorG] = rows
     dataframe = dataframe.set_index(SorG)
+    dataframe = dataframe.loc[:].div(dataframe.sum(axis = 0))
+
+    if SorG == "Species":
+        dataframe = dataframe[dataframe.index.isin(agora2Species)]
+    else:
+        dataframe = dataframe[dataframe.index.isin(agora2Genera)]
+
     dataframe.set_index(dataframe.index.str.replace(" ", "_", regex = True), inplace = True)
     dataframe.set_index('pan' + dataframe.index.astype(str), inplace = True)
-    dataframe = dataframe.loc[:].div(dataframe.sum(axis = 0))
     
     return dataframe 
