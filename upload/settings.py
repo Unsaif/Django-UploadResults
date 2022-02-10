@@ -25,7 +25,7 @@ SECRET_KEY = 'rj*9b)chjv36ds8eq87p!^vn^f$#&p97%=4co)lkc_70wa+np9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['king.nuigalway.ie']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
